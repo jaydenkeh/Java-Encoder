@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Encoder {
     private char offset;
 
@@ -9,7 +7,7 @@ public class Encoder {
     }
 
     public String encode(String plainText) {
-        char[] table = ReferenceTable.getTable();
+        String table = ReferenceTable.getTable();
         char[] chars = plainText.toCharArray(); // converts the given plain text input by the user into an array of characters of the text 
 
         StringBuilder encodedText = new StringBuilder(); 
@@ -21,19 +19,18 @@ public class Encoder {
         // of an existing StringBuilder object.
 
         for (char c : chars) {
-            int index = Arrays.binarySearch(table, c);
+            int index = table.indexOf(c);
             if (index >= 0) {
-                index = (index - Arrays.binarySearch(table, offset) + table.length) % table.length; 
+                int shiftedIndex = (index - table.indexOf(offset) + table.length()) % table.length(); 
                 // Subtracting the index of the offset character from the index of the plaintext character in the table array
                 // shifts the index of the plaintext character by the same amount as the offset character
 
                 // However, there could be cases whereby the resulting index is negative, so we need to add the length
                 // of the table array to the result before taking the modulus
 
-
                 // Note for modulus operator if the value of the dividend is less than the divisor (the number to be divided by),
                 // it will simply return the dividend value
-                encodedText.append(table[index]);
+                encodedText.append(table.charAt(shiftedIndex));
             } else {
                 encodedText.append(c);
             }

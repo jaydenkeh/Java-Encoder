@@ -17,11 +17,10 @@
 // In the main method, you can create an object of Encoder and call its encode method with a plainText string. Then, create an object of Decoder and call its decode method with the encodedText string to get back the original plainText string.
 
 public class ReferenceTable {
-    private static final char[] TABLE = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 
-    'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '(', ')', '*', '+', ',', '-', '.', '/'};
+    private static final String TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789()*+,-./";
     
-    public static char[] getTable() {
-            return TABLE;
+    public static String getTable() {
+        return TABLE;
     }
     
 }

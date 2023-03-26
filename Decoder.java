@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Decoder {
     private char offset;
 
@@ -8,16 +6,16 @@ public class Decoder {
     }
 
     public String decode(String encodedText) {
-        char[] table = ReferenceTable.getTable();
+        String table = ReferenceTable.getTable();
         char[] chars = encodedText.toCharArray();
 
         StringBuilder plainText = new StringBuilder();
 
         for (char c : chars) {
-            int index = Arrays.binarySearch(table, c);
+            int index = table.indexOf(c);
             if (index >= 0) {
-                index = (index + Arrays.binarySearch(table, offset)) % table.length;
-                plainText.append(table[index]);
+                int shiftedIndex = (index + table.indexOf(offset)) % table.length(); 
+                plainText.append(table.charAt(shiftedIndex));
             } else {
                 plainText.append(c);
             }
