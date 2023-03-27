@@ -9,7 +9,7 @@ public class Main {
         Decoder decoder = new Decoder(offset);
 
         while (true) {
-            System.out.println("Choose an option:");
+            System.out.println("Choose an option (enter just the number):");
             System.out.println("1. Encode a message");
             System.out.println("2. Decode a message");
             System.out.println("3. Exit");
